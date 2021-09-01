@@ -31,7 +31,7 @@
                        Text="100"/>
             <TextBlock Name="TextBlockDaysDetails"
                        Margin="0,35,20,0"
-                       Foreground="#169141"
+                       Foreground="{Binding ElementName=TextBlockDays, Path=Foreground}"
                        Background="Transparent"
                        HorizontalAlignment="Center"
                        FontFamily="/GaokaoCountdown;component/Resources/#Circular Sp UI T Bold"

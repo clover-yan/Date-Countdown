@@ -42,6 +42,7 @@ namespace GaokaoCountdown
         {
             TimeSpan timeSpan = new DateTime(2022, 6, 7, 9, 0, 0) - DateTime.Now;
             TextBlockDays.Text = timeSpan.Days.ToString();
+            if (timeSpan.Days < 100) TextBlockDays.Foreground = Brushes.Red;
             string detailStr = ((timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0).ToString(StringFormat);
             TextBlockDaysDetails.Text = detailStr;
         }
