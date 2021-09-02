@@ -44,6 +44,22 @@ namespace GaokaoCountdown
             TextBlockDays.Text = timeSpan.Days.ToString();
             if (timeSpan.Days < 100) TextBlockDays.Foreground = Brushes.Red;
             string detailStr = ((timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0).ToString(StringFormat);
+            if (detailStr.StartsWith("1."))
+            {
+                try
+                {
+                    detailStr = ".";
+                    int n = int.Parse(App.StartArgs[0]);
+                    while (n-- > 0)
+                    {
+                        StringFormat += "9";
+                    }
+                }
+                catch
+                {
+                    detailStr = ".999";
+                }
+            }
             TextBlockDaysDetails.Text = detailStr;
         }
 
@@ -57,7 +73,7 @@ namespace GaokaoCountdown
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Top = 150;
+            Top = 20;
             Left = 0;
             Width = SystemParameters.WorkArea.Width;
 
