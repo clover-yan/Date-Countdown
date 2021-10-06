@@ -16,7 +16,8 @@
         ShowInTaskbar="False">
     <Grid MouseMove="Grid_MouseMove">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Background="Transparent"
+            <TextBlock Name="TextBlockTitle"
+                       Background="Transparent"
                        HorizontalAlignment="Center"
                        FontFamily="Microsoft YaHei UI"
                        FontSize="60"
