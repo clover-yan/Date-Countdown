@@ -107,6 +107,11 @@ namespace GaokaoCountdown
                     ShowInTaskbar = true;
                 }
 
+                if (App.StartArgs.Contains("-l"))
+                {
+                    Foreground = Brushes.White;
+                }
+
                 if (App.StartArgs.Contains("-jf"))
                 {
                     TextBlockTitle.Text = "距离解放还有";
