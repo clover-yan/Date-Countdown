@@ -94,7 +94,7 @@ namespace GaokaoCountdown
                 }
                 catch
                 {
-                    StringFormat = ".0";
+                    StringFormat = ".000";
                 }
 
                 if (App.StartArgs.Contains("-c"))
