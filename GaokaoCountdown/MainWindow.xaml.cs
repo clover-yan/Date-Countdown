@@ -40,10 +40,10 @@ namespace GaokaoCountdown
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            TimeSpan timeSpan = new DateTime(2022, 6, 7, 9, 0, 0) - DateTime.Now;
+            TimeSpan timeSpan = new DateTime(2023, 6, 7, 9, 0, 0) - DateTime.Now;
             if (isJFMode)
             {
-                timeSpan = new DateTime(2022, 6, 8, 17, 0, 0) - DateTime.Now;
+                timeSpan = new DateTime(2023, 6, 8, 17, 0, 0) - DateTime.Now;
             }
             TextBlockDays.Text = timeSpan.Days.ToString();
             if (timeSpan.Days < 100) TextBlockDays.Foreground = Brushes.Red;
