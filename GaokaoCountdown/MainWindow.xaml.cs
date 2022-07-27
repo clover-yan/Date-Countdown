@@ -40,10 +40,11 @@ namespace GaokaoCountdown
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            TimeSpan timeSpan = new DateTime(2023, 6, 7, 9, 0, 0) - DateTime.Now;
+            int year = getYear();
+            TimeSpan timeSpan = new DateTime(year, 6, 7, 9, 0, 0) - DateTime.Now;
             if (isJFMode)
             {
-                timeSpan = new DateTime(2023, 6, 8, 17, 0, 0) - DateTime.Now;
+                timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
             }
             TextBlockDays.Text = timeSpan.Days.ToString();
             if (timeSpan.Days < 100) TextBlockDays.Foreground = Brushes.Red;
@@ -65,6 +66,13 @@ namespace GaokaoCountdown
                 }
             }
             TextBlockDaysDetails.Text = detailStr;
+        }
+
+        private int getYear()
+        {
+            TimeSpan timeSpan = new DateTime(DateTime.Now.Year, 6, 7, 9, 0, 0) - DateTime.Now;
+            if (timeSpan.TotalSeconds < 0) return DateTime.Now.Year + 1;
+            else return DateTime.Now.Year;
         }
 
         private void Grid_MouseMove(object sender, MouseEventArgs e)
