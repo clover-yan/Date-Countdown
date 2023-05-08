@@ -153,7 +153,7 @@ namespace DateCountdown
 
         bool redText = false;
         // bool isJFMode = false;
-        TimeSpan targetTime;
+        DateTime targetTime;
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
