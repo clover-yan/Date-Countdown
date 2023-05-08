@@ -1,9 +1,9 @@
-﻿<Window x:Class="GaokaoCountdown.MainWindow"
+﻿<Window x:Class="DateCountdown.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GaokaoCountdown"
+        xmlns:local="clr-namespace:DateCountdown"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -12,7 +12,7 @@
         Height="120" Width="800"
         Loaded="Window_Loaded"
         StateChanged="Window_StateChanged"
-        Title="Gaokao Countdown by WXRIW"
+        Title="Date Countdown App by Clover Yan based on WXRIW's work"
         ShowInTaskbar="False">
     <Grid MouseMove="Grid_MouseMove">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -27,7 +27,7 @@
                        Foreground="#169141"
                        Background="Transparent"
                        HorizontalAlignment="Center"
-                       FontFamily="/GaokaoCountdown;component/Resources/#Circular Sp UI T Bold"
+                       FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Bold"
                        FontSize="80"
                        Text="100"/>
             <TextBlock Name="TextBlockDaysDetails"
@@ -35,7 +35,7 @@
                        Foreground="{Binding ElementName=TextBlockDays, Path=Foreground}"
                        Background="Transparent"
                        HorizontalAlignment="Center"
-                       FontFamily="/GaokaoCountdown;component/Resources/#Circular Sp UI T Bold"
+                       FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Bold"
                        FontSize="40"
                        Text=".00"/>
             <TextBlock Background="Transparent"
@@ -44,9 +44,9 @@
                        FontSize="60"
                        Text="天"/>
             <TextBlock Name="TextBlockCopyright"
-                       Text="WXRIW (XY Wang) Production"
+                       Text="Clover Yan, WXRIW (XY Wang) Production"
                        Margin="-300,90,0,0"
-                       FontFamily="/GaokaoCountdown;component/Resources/#Circular Sp UI T Book"
+                       FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Book"
                        FontSize="18"
                        HorizontalAlignment="Right"/>
         </StackPanel>

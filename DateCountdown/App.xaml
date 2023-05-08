@@ -1,7 +1,7 @@
-﻿<Application x:Class="GaokaoCountdown.App"
+﻿<Application x:Class="DateCountdown.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GaokaoCountdown"
+             xmlns:local="clr-namespace:DateCountdown"
              StartupUri="MainWindow.xaml" Startup="Application_Startup">
     <Application.Resources>
          

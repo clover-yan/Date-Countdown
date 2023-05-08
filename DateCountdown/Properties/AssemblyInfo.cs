@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Gaokao Countdown")]
-[assembly: AssemblyDescription("Gaokao Countdown by WXRIW (XY Wang)")]
+[assembly: AssemblyTitle("Date Countdown")]
+[assembly: AssemblyDescription("Date Countdown App by Clover Yan based on WXRIW's work")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("WXRIW (XY Wang)")]
-[assembly: AssemblyProduct("Gaokao Countdown")]
-[assembly: AssemblyCopyright("Copyright © WXRIW 2022")]
+[assembly: AssemblyCompany("Clover Yan; WXRIW (XY Wang)")]
+[assembly: AssemblyProduct("Date Countdown")]
+[assembly: AssemblyCopyright("Copyright © Clover Yan, WXRIW 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
