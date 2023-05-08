@@ -45,19 +45,19 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
 
-    - name: Build the solution (x64)
-      run: |
-        msbuild -t:restore /p:GitFlow="Github Action"
-        msbuild /p:Configuration=Release /p:Platform="x64" /p:GitFlow="Github Action"
-      env:
-        Configuration: ${{ matrix.configuration }}
+    # - name: Build the solution (x64)
+    #   run: |
+    #     msbuild -t:restore /p:GitFlow="Github Action"
+    #     msbuild /p:Configuration=Release /p:Platform="x64" /p:GitFlow="Github Action"
+    #   env:
+    #     Configuration: ${{ matrix.configuration }}
 
-    - name: Build the solution (ARM64)
-      run: |
-        msbuild -t:restore /p:GitFlow="Github Action"
-        msbuild /p:Configuration=Release /p:Platform="ARM64" /p:GitFlow="Github Action"
-      env:
-        Configuration: ${{ matrix.configuration }}
+    # - name: Build the solution (ARM64)
+    #   run: |
+    #     msbuild -t:restore /p:GitFlow="Github Action"
+    #     msbuild /p:Configuration=Release /p:Platform="ARM64" /p:GitFlow="Github Action"
+    #   env:
+    #     Configuration: ${{ matrix.configuration }}
         
     # 上传编译成品
     - name: Upload to artifact
@@ -66,14 +66,14 @@ jobs:
         name: Date-Countdown
         path: Date Countdown/bin/Release
         
-    - name: Upload to artifact (x64)
-      uses: actions/upload-artifact@main
-      with:
-        name: Date-Countdown-x64
-        path: Date Countdown/bin/x64/Release
+    # - name: Upload to artifact (x64)
+    #   uses: actions/upload-artifact@main
+    #   with:
+    #     name: Date-Countdown-x64
+    #     path: Date Countdown/bin/x64/Release
         
-    - name: Upload to artifact (ARM64)
-      uses: actions/upload-artifact@main
-      with:
-        name: Date-Countdown-ARM64
-        path: Date Countdown/bin/ARM64/Release
+    # - name: Upload to artifact (ARM64)
+    #   uses: actions/upload-artifact@main
+    #   with:
+    #     name: Date-Countdown-ARM64
+    #     path: Date Countdown/bin/ARM64/Release
