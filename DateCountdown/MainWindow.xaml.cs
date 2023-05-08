@@ -89,6 +89,15 @@ namespace DateCountdown
             Left = 0;
             Width = SystemParameters.WorkArea.Width;
 
+            try
+            {
+                targetTime = new DateTime(int.Parse(App.StartArgs[1]), int.Parse(App.StartArgs[2]), int.Parse(App.StartArgs[3]), int.Parse(App.StartArgs[4]), int.Parse(App.StartArgs[5]), int.Parse(App.StartArgs[6]));
+            }
+            catch
+            {
+                targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
+            }
+            
             if (App.StartArgs != null)
             {
                 StringFormat = ".";
@@ -99,15 +108,6 @@ namespace DateCountdown
                 catch
                 {
                     TextBlockTitle.Text = "距离高考还有";
-                }
-
-                try
-                {
-                    targetTime = new DateTime(int.Parse(App.StartArgs[1]), int.Parse(App.StartArgs[2]), int.Parse(App.StartArgs[3]), int.Parse(App.StartArgs[4]), int.Parse(App.StartArgs[5]), int.Parse(App.StartArgs[6]));
-                }
-                catch
-                {
-                    targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
                 }
                 
                 try
