@@ -40,21 +40,21 @@ namespace DateCountdown
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            int year = getYear();
-            TimeSpan timeSpan = new DateTime(year, 6, 7, 9, 0, 0) - DateTime.Now;
-            if (isJFMode)
-            {
-                timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
-            }
+            // int year = getYear();
+            TimeSpan timeSpan = targetTime - DateTime.Now;
+            // if (isJFMode)
+            // {
+            //     timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
+            // }
             TextBlockDays.Text = timeSpan.Days.ToString();
-            if (timeSpan.Days < 100) TextBlockDays.Foreground = Brushes.Red;
+            if (redText) TextBlockDays.Foreground = Brushes.Red;
             string detailStr = ((timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0).ToString(StringFormat);
             if (detailStr.StartsWith("1."))
             {
                 try
                 {
                     detailStr = ".";
-                    int n = int.Parse(App.StartArgs[0]);
+                    int n = int.Parse(App.StartArgs[7]);
                     while (n-- > 0)
                     {
                         StringFormat += "9";
@@ -94,7 +94,21 @@ namespace DateCountdown
                 StringFormat = ".";
                 try
                 {
-                    int n = int.Parse(App.StartArgs[0]);
+                    TextBlockTitle.Text = App.StartArgs[0];
+                }
+                catch
+                {
+                    TextBlockTitle.Text = "距离高考还有";
+                }
+
+                try
+                {
+                    targetTime = new DateTime(int.Parse(App.StartArgs[1]), int.Parse(App.StartArgs[2]), int.Parse(App.StartArgs[3]), int.Parse(App.StartArgs[4]), int.Parse(App.StartArgs[5]), int.Parse(App.StartArgs[6]));
+                }
+                
+                try
+                {
+                    int n = int.Parse(App.StartArgs[7]);
                     while (n-- > 0)
                     {
                         StringFormat += "0";
@@ -115,20 +129,27 @@ namespace DateCountdown
                     ShowInTaskbar = true;
                 }
 
+                if (App.StartArgs.Contains("-r"))
+                {
+                    redText = true;
+                }
+                
                 if (App.StartArgs.Contains("-l"))
                 {
                     Foreground = Brushes.White;
                 }
 
-                if (App.StartArgs.Contains("-jf"))
-                {
-                    TextBlockTitle.Text = "距离解放还有";
-                    isJFMode = true;
-                }
+                // if (App.StartArgs.Contains("-jf"))
+                // {
+                //     TextBlockTitle.Text = "距离解放还有";
+                //     isJFMode = true;
+                // }
             }
         }
 
-        bool isJFMode = false;
+        bool redText = false;
+        // bool isJFMode = false;
+        TimeSpan targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
