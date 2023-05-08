@@ -105,6 +105,10 @@ namespace DateCountdown
                 {
                     targetTime = new DateTime(int.Parse(App.StartArgs[1]), int.Parse(App.StartArgs[2]), int.Parse(App.StartArgs[3]), int.Parse(App.StartArgs[4]), int.Parse(App.StartArgs[5]), int.Parse(App.StartArgs[6]));
                 }
+                catch
+                {
+                    targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
+                }
                 
                 try
                 {
@@ -149,7 +153,7 @@ namespace DateCountdown
 
         bool redText = false;
         // bool isJFMode = false;
-        TimeSpan targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
+        TimeSpan targetTime;
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
