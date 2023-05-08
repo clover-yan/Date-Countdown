@@ -64,16 +64,16 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: Date-Countdown
-        path: Date Countdown/bin/Release
+        path: DateCountdown/bin/Release
         
     # - name: Upload to artifact (x64)
     #   uses: actions/upload-artifact@main
     #   with:
     #     name: Date-Countdown-x64
-    #     path: Date Countdown/bin/x64/Release
+    #     path: DateCountdown/bin/x64/Release
         
     # - name: Upload to artifact (ARM64)
     #   uses: actions/upload-artifact@main
     #   with:
     #     name: Date-Countdown-ARM64
-    #     path: Date Countdown/bin/ARM64/Release
+    #     path: DateCountdown/bin/ARM64/Release
