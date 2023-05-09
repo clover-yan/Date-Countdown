@@ -48,7 +48,9 @@ namespace DateCountdown
             // }
             TextBlockDays.Text = (neg ? timeSpan.Days : Math.Abs(timeSpan.Days)).ToString();
             if (redText || (!greenText && timeSpan.Days < 100)) TextBlockDays.Foreground = Brushes.Red;
-            string detailStr = Math.Abs((timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0).ToString(StringFormat);
+            double detailNum = (timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0);
+            if (detailNum < 0.0) TextBlockDays.Text = "-" + TextBlockDays.Text;
+            string detailStr = Math.Abs(detailNum).ToString(StringFormat);
             if (detailStr.StartsWith("1."))
             {
                 try
