@@ -47,9 +47,9 @@ namespace DateCountdown
             //     timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
             // }
             TextBlockDays.Text = (neg ? timeSpan.Days : Math.Abs(timeSpan.Days)).ToString();
-            if (redText || ((!greenText) && timeSpan.Days < 100)) TextBlockDays.Foreground = Brushes.Red;
+            if (redText || ((!greenText) && timeSpan.Days < 100)) { TextBlockDays.Foreground = Brushes.Red; }
             double detailNum = (timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0;
-            if (detailNum < 0.0 && neg) TextBlockDays.Text = "-" + TextBlockDays.Text;
+            if (detailNum < 0.0 && neg) { TextBlockDays.Text = "-" + TextBlockDays.Text; }
             string detailStr = Math.Abs(detailNum).ToString(StringFormat);
             if (detailStr.StartsWith("1."))
             {
