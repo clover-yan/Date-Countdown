@@ -46,16 +46,12 @@ namespace DateCountdown
             // {
             //     timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
             // }
-            TextBlockDays.Text = (neg ? timeSpan.Days : Math.Abs(timeSpan.Days)).ToString();
+            TextBlockDays.Text = (redText || ((!greenText) && (timeSpan.Days < 100)) ? "-" : "") + Math.Abs(timeSpan.Days).ToString();
             if (redText || ((!greenText) && (timeSpan.Days < 100)))
             {
                 TextBlockDays.Foreground = Brushes.Red;
             }
             double detailNum = (timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0;
-            if ((detailNum < 0.0) && neg)
-            {
-                TextBlockDays.Text = "-" + TextBlockDays.Text;
-            }
             string detailStr = Math.Abs(detailNum).ToString(StringFormat);
             if (detailStr.StartsWith("1."))
             {
@@ -141,14 +137,10 @@ namespace DateCountdown
                     ShowInTaskbar = true;
                 }
 
-                if (App.StartArgs.Contains("-r"))
-                {
+                if (App.StartArgs.Contains("-r")) {
                     redText = true;
-                }
-                
-                if (App.StartArgs.Contains("-g"))
-                {
-                    greenText = true;
+                } else if (!App.StartArgs.Contains("-g")) {
+                    greenText = false;
                 }
 
                 if (App.StartArgs.Contains("-l"))
@@ -158,7 +150,7 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-n"))
                 {
-                    neg = false;
+                    neg = true;
                 }
 
                 // if (App.StartArgs.Contains("-jf"))
@@ -170,8 +162,8 @@ namespace DateCountdown
         }
 
         bool redText = false;
-        bool greenText = false;
-        bool neg = true;
+        bool greenText = true;
+        bool neg = false;
         // bool isJFMode = false;
         DateTime targetTime;
 
