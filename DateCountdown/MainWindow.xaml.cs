@@ -55,7 +55,7 @@ namespace DateCountdown
             {
                 try
                 {
-                    detailStr = ".";
+                    StringFormat = detailStr = ".";
                     int n = int.Parse(App.StartArgs[7]);
                     while (n-- > 0)
                     {
