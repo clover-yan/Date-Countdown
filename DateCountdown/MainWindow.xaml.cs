@@ -46,9 +46,9 @@ namespace DateCountdown
             // {
             //     timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
             // }
-            TextBlockDays.Text = timeSpan.Days.ToString();
-            if (redText) TextBlockDays.Foreground = Brushes.Red;
-            string detailStr = ((timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0).ToString(StringFormat);
+            TextBlockDays.Text = (neg ? timeSpan.Days : Math.Abs(timeSpan.Days)).ToString();
+            if (redText || (!greenText && timeSpan.Days < 100)) TextBlockDays.Foreground = Brushes.Red;
+            string detailStr = Math.Abs((timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0).ToString(StringFormat);
             if (detailStr.StartsWith("1."))
             {
                 try
@@ -138,9 +138,19 @@ namespace DateCountdown
                     redText = true;
                 }
                 
+                if (App.StartArgs.Contains("-g"))
+                {
+                    greenText = true;
+                }
+
                 if (App.StartArgs.Contains("-l"))
                 {
                     Foreground = Brushes.White;
+                }
+
+                if (App.StartArgs.Contains("-n"))
+                {
+                    neg = false;
                 }
 
                 // if (App.StartArgs.Contains("-jf"))
@@ -152,6 +162,8 @@ namespace DateCountdown
         }
 
         bool redText = false;
+        bool greenText = false;
+        bool neg = true;
         // bool isJFMode = false;
         DateTime targetTime;
 
