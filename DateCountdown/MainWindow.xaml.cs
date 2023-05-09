@@ -46,7 +46,7 @@ namespace DateCountdown
             // {
             //     timeSpan = new DateTime(year, 6, 8, 17, 0, 0) - DateTime.Now;
             // }
-            TextBlockDays.Text = (redText || ((!greenText) && (timeSpan.Days < 100)) ? "-" : "") + Math.Abs(timeSpan.Days).ToString();
+            TextBlockDays.Text = ((detailNum < 0.0) && neg ? "-" : "") + Math.Abs(timeSpan.Days).ToString();
             if (redText || ((!greenText) && (timeSpan.Days < 100)))
             {
                 TextBlockDays.Foreground = Brushes.Red;
