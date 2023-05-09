@@ -1,33 +1,44 @@
 # Date-Countdown
-Date Countdown App by Clover Yan based on [WXRIW's work](https://github.com/WXRIW/Gaokao-Countdown)
+由 Clover Yan 基于 [WXRIW 的作品](https://github.com/WXRIW/Gaokao-Countdown) 制作的日期倒计时应用。
 
-## Usage
-Run *with parameter*.
+## 使用方法
+运行程序，以显示高考倒计时。
 
-### Parameter 1
-Specifies the **description** which will be displayed before the count number.
+你也可以通过参数进行自定义。所有的参数都是可选的。
 
-Default value is `距离高考还有`.
+### 参数 1
+指定将在计数数字前显示的**描述文本**。
 
-### Parameter 2 ~ 7
-Specifies the **target year, month, day, hour, minute and second**.
+默认值为 `距离高考还有`。
 
-Default value is `next 7th June 9:00`.
+### 参数 2 ~ 7
+指定**目标年、月、日、时、分和秒**。
 
-### Parameter 8
-Specifies the **decimal digits**.
+默认值为 __下一个 6 月 7 日的 9:00__。
 
-Default value is `3`.
+> **请注意：一旦需要指定日期和 / 或时间，必须指定参数 2 至参数 7 的所有参数。**
 
-### Other parameters
+### 参数 8
+指定计数的**小数位数**。
+
+默认值为 `3`。
+
+### 其他参数
 #### `-c`
-Hide the copyright message.
+隐藏版权信息。
 
 #### `-t`
-Show in taskbar.
+在任务栏中显示。
 
-#### `-r`
-Show count in red.
+#### `-r` / `-g`
+以红色 / 绿色显示计数。
+
+`-r` 会覆盖 `-g` 的设置。
+
+省略这两个参数意味着依天数而定（剩余计数不足 100 天时显示红色，否则显示绿色）。
 
 #### `-l`
-Light mode (show description in white).
+亮色模式（以白色显示描述文本）。
+
+#### `-n`
+显示负数前的负号。
