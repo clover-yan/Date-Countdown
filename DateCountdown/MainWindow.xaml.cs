@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -170,6 +170,8 @@ namespace DateCountdown
                 //     TextBlockTitle.Text = "距离解放还有";
                 //     isJFMode = true;
                 // }
+            } else {
+                greenText = false;
             }
         }
 
