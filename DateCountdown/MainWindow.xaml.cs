@@ -160,6 +160,11 @@ namespace DateCountdown
                     TextBlockTitle.Effect = TextBlockDays.Effect = TextBlockDaysDetails.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
                 }
 
+                if (App.StartArgs.Contains("-p"))
+                {
+                    Topmost = true;
+                }
+
                 // if (App.StartArgs.Contains("-jf"))
                 // {
                 //     TextBlockTitle.Text = "距离解放还有";
