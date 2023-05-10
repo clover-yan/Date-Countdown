@@ -38,7 +38,8 @@
                        FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Bold"
                        FontSize="40"
                        Text=".00"/>
-            <TextBlock Background="Transparent"
+            <TextBlock Name="AfterText"
+                       Background="Transparent"
                        HorizontalAlignment="Center"
                        FontFamily="Microsoft YaHei UI"
                        FontSize="60"

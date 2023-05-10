@@ -145,12 +145,18 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-l"))
                 {
+                    light = true;
                     Foreground = Brushes.White;
                 }
 
                 if (App.StartArgs.Contains("-n"))
                 {
                     neg = true;
+                }
+
+                if (App.StartArgs.Contains("-b"))
+                {
+                    TextBlockTitle.Effect = TextBlockDays.Effect = TextBlockDaysDetails.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
                 }
 
                 // if (App.StartArgs.Contains("-jf"))
@@ -164,6 +170,7 @@ namespace DateCountdown
         bool redText = false;
         bool greenText = true;
         bool neg = false;
+        bool light = false;
         // bool isJFMode = false;
         DateTime targetTime;
 
