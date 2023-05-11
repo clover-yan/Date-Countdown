@@ -164,7 +164,8 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-b"))
                 {
-                    TextBlockTitle.Effect = TextBlockDays.Effect = TextBlockDaysDetails.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
+                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Color.FromArgb((alpha ? 128 : 255), Colors.Black) : Color.FromArgb((alpha ? 128 : 255), Colors.White), Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
+                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Color.FromArgb((alpha ? 128 : 255), Colors.White) : Color.FromArgb((alpha ? 128 : 255), Colors.Black), Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
                 }
 
                 if (App.StartArgs.Contains("-p"))
