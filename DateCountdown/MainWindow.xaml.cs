@@ -148,7 +148,7 @@ namespace DateCountdown
                 if (App.StartArgs.Contains("-a")) {
                     alpha = true;
                     Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = 0.5 };
-                    TextBlockDays.Foreground = new SolidColorBrush(TextBlockDays.Foreground.Color) { Opacity = 0.5 };
+                    TextBlockDays.Foreground = new SolidColorBrush(((SolidColorBrush)TextBlockDays.Foreground).Color) { Opacity = 0.5 };
                 }
 
                 if (App.StartArgs.Contains("-r")) {
@@ -189,7 +189,7 @@ namespace DateCountdown
         bool alpha = false;
         bool reded = false;
         // bool isJFMode = false;
-        DateTime targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
+        DateTime targetTime = new DateTime(2000, 1, 1, 0, 0, 0);
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
