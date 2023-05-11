@@ -46,9 +46,10 @@
                        Text="天"/>
             <TextBlock Name="TextBlockCopyright"
                        Text="Clover Yan, WXRIW (XY Wang) Production"
+                       Margin="-350,90,0,0"
                        FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Book"
                        FontSize="18"
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -49,9 +49,10 @@ namespace DateCountdown
             // }
             double detailNum = (timeSpan.Hours * 3600000 + timeSpan.Minutes * 60000 + timeSpan.Seconds * 1000 + timeSpan.Milliseconds) / 86400000.0;
             TextBlockDays.Text = ((timeSpan.Days < 0 || detailNum < 0.0) && neg ? "-" + Math.Abs(timeSpan.Days).ToString() : Math.Abs(timeSpan.Days).ToString());
-            if (redText || ((!greenText) && (timeSpan.Days < 100)))
+            if (!reded && (redText || (!greenText && (timeSpan.Days < 100))))
             {
-                TextBlockDays.Foreground = Brushes.Red;
+                reded = true;
+                TextBlockDays.Foreground = new SolidColorBrush(Colors.Red) { Opacity = alpha ? 0.5 : 1 };
             }
             string detailStr = Math.Abs(detailNum).ToString(StringFormat);
             if (detailStr.StartsWith("1."))
@@ -138,16 +139,22 @@ namespace DateCountdown
                     ShowInTaskbar = true;
                 }
 
-                if (App.StartArgs.Contains("-r")) {
-                    redText = true;
-                } else if (!App.StartArgs.Contains("-g")) {
-                    greenText = false;
-                }
-
                 if (App.StartArgs.Contains("-l"))
                 {
                     light = true;
                     Foreground = Brushes.White;
+                }
+
+                if (App.StartArgs.Contains("-a")) {
+                    alpha = true;
+                    Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = 0.5 };
+                    TextBlockDays.Foreground = new SolidColorBrush(TextBlockDays.Foreground.Color) { Opacity = 0.5 };
+                }
+
+                if (App.StartArgs.Contains("-r")) {
+                    redText = true;
+                } else if (!App.StartArgs.Contains("-g")) {
+                    greenText = false;
                 }
 
                 if (App.StartArgs.Contains("-n"))
@@ -179,8 +186,10 @@ namespace DateCountdown
         bool greenText = true;
         bool neg = false;
         bool light = false;
+        bool alpha = false;
+        bool reded = false;
         // bool isJFMode = false;
-        DateTime targetTime;
+        DateTime targetTime = new DateTime(getYear(), 6, 7, 9, 0, 0);
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
