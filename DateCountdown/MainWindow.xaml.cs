@@ -39,6 +39,32 @@ namespace DateCountdown
             dispatcherTimer.Start();
         }
 
+        // 利用 win32 接口实现窗体鼠标事件穿透
+        const int WS_EX_TRANSPARENT = 0x20;
+        const int GWL_EXSTYLE = -20;
+
+        [DllImport("user32.dll")]
+        static extern int GetWindowLong(IntPtr hwnd, int index);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+
+            if (App.StartArgs.Contains("-k"))
+            {
+
+                // Get this window's handle
+                IntPtr hwnd = new WindowInteropHelper(this).Handle;
+
+                // Change the extended window style to include WS_EX_TRANSPARENT
+                int extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+                SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
+            }
+        }
+
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             // int year = getYear();
@@ -110,6 +136,9 @@ namespace DateCountdown
                 try
                 {
                     TextBlockTitle.Text = App.StartArgs[0];
+                    if (TextBlockTitle.Text == "") {
+                        TextBlockTitle.Text = "距离高考还有";
+                    }
                 }
                 catch
                 {
@@ -164,8 +193,8 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-b"))
                 {
-                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = alpha ? 10 : 5 };
-                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = alpha ? 10 : 5 };
+                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = alpha ? 15 : 5 };
+                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = alpha ? 15 : 5 };
                 }
 
                 if (App.StartArgs.Contains("-p"))
