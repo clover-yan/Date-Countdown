@@ -53,7 +53,7 @@ namespace DateCountdown
         {
             base.OnSourceInitialized(e);
 
-            if (App.StartArgs.Contains("-k"))
+            if (App.StartArgs != null && App.StartArgs.Contains("-k"))
             {
 
                 // Get this window's handle
