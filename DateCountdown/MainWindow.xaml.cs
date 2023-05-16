@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -262,7 +263,7 @@ namespace DateCountdown
         bool alpha = false;
         bool reded = false;
         bool isFullScreen = false;
-        float transState = 0;
+        double transState = 0.0;
         // bool isJFMode = false;
         DateTime targetTime = new DateTime(2000, 1, 1, 0, 0, 0);
 
