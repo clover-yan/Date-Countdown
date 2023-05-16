@@ -65,6 +65,30 @@ namespace DateCountdown
             }
         }
 
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left;        // x position of upper-left corner
+            public int Top;         // y position of upper-left corner
+            public int Right;       // x position of lower-right corner
+            public int Bottom;      // y position of lower-right corner
+        }
+
+        public static bool IsForegroundFullScreen()
+        {
+            IntPtr handle = GetForegroundWindow();
+            RECT rect;
+            GetWindowRect(handle, out rect);
+            return rect.Left <= 0 && rect.Top <= 0 && rect.Right >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width && rect.Bottom >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+        }
+
+
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             // int year = getYear();
@@ -98,6 +122,25 @@ namespace DateCountdown
                 }
             }
             TextBlockDaysDetails.Text = detailStr;
+
+            if (Topmost) {
+                if (!isFullScreen && IsForegroundFullScreen()) {
+                    isFullScreen = true;
+                    transState = 0.0;
+                }
+                if (isFullScreen) {
+                    if (IsForegroundFullScreen()) {
+                        if ((transState += 0.01) > 3.14)
+                            transState = -3.14;
+                        Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
+                        TextBlockDays.Foreground = new SolidColorBrush(((SolidColorBrush)TextBlockDays.Foreground).Color) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
+                    } else {
+                        isFullScreen = false;
+                        Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = alpha ? 0.5 : 1.0 };
+                        TextBlockDays.Foreground = new SolidColorBrush(((SolidColorBrush)TextBlockDays.Foreground).Color) { Opacity = alpha ? 0.5 : 1.0 };
+                    }
+                }
+            }
         }
 
         private int getYear()
@@ -218,6 +261,8 @@ namespace DateCountdown
         bool light = false;
         bool alpha = false;
         bool reded = false;
+        bool isFullScreen = false;
+        float transState = 0;
         // bool isJFMode = false;
         DateTime targetTime = new DateTime(2000, 1, 1, 0, 0, 0);
 
