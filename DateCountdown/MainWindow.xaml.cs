@@ -72,6 +72,9 @@ namespace DateCountdown
         [DllImport("user32.dll")]
         static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
+        [DllImport("user32.dll")]
+        static extern bool IsZoomed(IntPtr hWnd);
+
         [StructLayout(LayoutKind.Sequential)]
         public struct RECT
         {
@@ -87,6 +90,10 @@ namespace DateCountdown
             RECT rect;
             GetWindowRect(handle, out rect);
             return rect.Left <= 0 && rect.Top <= 0 && rect.Right >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width && rect.Bottom >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+        }
+
+        public static bool IsMaximized() {
+            return IsZoomed(GetForegroundWindow());
         }
 
 
@@ -125,12 +132,12 @@ namespace DateCountdown
             TextBlockDaysDetails.Text = detailStr;
 
             if (Topmost) {
-                if (!isFullScreen && IsForegroundFullScreen()) {
+                if (!isFullScreen && (IsForegroundFullScreen() || IsMaximized())) {
                     isFullScreen = true;
                     transState = 0.0;
                 }
                 if (isFullScreen) {
-                    if (IsForegroundFullScreen()) {
+                    if (IsForegroundFullScreen() || IsMaximized()) {
                         if ((transState += 0.01) > 3.14)
                             transState = -3.14;
                         Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
