@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -89,7 +88,7 @@ namespace DateCountdown
             IntPtr handle = GetForegroundWindow();
             RECT rect;
             GetWindowRect(handle, out rect);
-            return rect.Left <= 0 && rect.Top <= 0 && rect.Right >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width && rect.Bottom >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            return rect.Left <= 0 && rect.Top <= 0 && rect.Right >= SystemParameters.PrimaryScreenWidth && rect.Bottom >= SystemParameters.PrimaryScreenHeight;
         }
 
         public static bool IsMaximized() {
@@ -168,7 +167,7 @@ namespace DateCountdown
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Top = 20;
+            Top = 30;
             Left = 0;
             Width = SystemParameters.WorkArea.Width;
 
