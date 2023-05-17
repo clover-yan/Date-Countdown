@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using sysF = System.Windows.Forms;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -86,7 +86,7 @@ namespace DateCountdown
 
         public static bool IsForegroundFullScreen()
         {
-            sysF.IntPtr handle = GetForegroundWindow();
+            IntPtr handle = GetForegroundWindow();
             RECT rect;
             GetWindowRect(handle, out rect);
             return rect.Left <= 0 && rect.Top <= 0 && rect.Right >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width && rect.Bottom >= System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
@@ -158,7 +158,7 @@ namespace DateCountdown
             else return DateTime.Now.Year;
         }
 
-        private void Grid_MouseMove(object sender, MouseEventArgs e)
+        private void Grid_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
