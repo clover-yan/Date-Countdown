@@ -137,8 +137,8 @@ namespace DateCountdown
                 }
                 if (isFullScreen) {
                     if (IsForegroundFullScreen() || IsMaximized()) {
-                        if ((transState += 0.01) > 3.14)
-                            transState = -3.14;
+                        if ((transState += 0.02) > 3)
+                            transState = -3;
                         Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
                         TextBlockDays.Foreground = new SolidColorBrush(((SolidColorBrush)TextBlockDays.Foreground).Color) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
                     } else {
@@ -243,8 +243,8 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-b"))
                 {
-                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = alpha ? 15 : 5 };
-                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = alpha ? 15 : 5 };
+                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
+                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
                 }
 
                 if (App.StartArgs.Contains("-p"))
