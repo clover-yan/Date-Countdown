@@ -130,15 +130,17 @@ namespace DateCountdown
             }
             TextBlockDaysDetails.Text = detailStr;
 
-            if (Topmost) {
+            if (pinned) {
+                if (!Topmost)
+                    Topmost = true;
                 if (!isFullScreen && (IsForegroundFullScreen() || IsMaximized())) {
                     isFullScreen = true;
                     transState = 0.0;
                 }
                 if (isFullScreen) {
                     if (IsForegroundFullScreen() || IsMaximized()) {
-                        if ((transState += 0.02) > 3)
-                            transState = -3;
+                        if ((transState += 0.02) > 2.4)
+                            transState = -2.4;
                         Foreground = new SolidColorBrush(light ? Colors.White : Colors.Black) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
                         TextBlockDays.Foreground = new SolidColorBrush(((SolidColorBrush)TextBlockDays.Foreground).Color) { Opacity = (Math.Cos(transState) + 1.0) / (alpha ? 4.0 : 2.0) };
                     } else {
@@ -167,7 +169,7 @@ namespace DateCountdown
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Top = 30;
+            Top = 32;
             Left = 0;
             Width = SystemParameters.WorkArea.Width;
 
@@ -243,12 +245,13 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-b"))
                 {
-                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
-                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
+                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5, Opacity = 0.5 };
+                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = 5, Opacity = 0.5 };
                 }
 
                 if (App.StartArgs.Contains("-p"))
                 {
+                    pinned = true;
                     Topmost = true;
                 }
 
@@ -268,17 +271,18 @@ namespace DateCountdown
         bool light = false;
         bool alpha = false;
         bool reded = false;
+        bool pinned = false;
         bool isFullScreen = false;
         double transState = 0.0;
         // bool isJFMode = false;
         DateTime targetTime = new DateTime(2000, 1, 1, 0, 0, 0);
 
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Minimized)
-            {
-                WindowState = WindowState.Normal;
-            }
-        }
+        // private void Window_StateChanged(object sender, EventArgs e)
+        // {
+        //     if (WindowState == WindowState.Minimized)
+        //     {
+        //         WindowState = WindowState.Normal;
+        //     }
+        // }
     }
 }
