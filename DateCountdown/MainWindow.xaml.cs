@@ -131,7 +131,8 @@ namespace DateCountdown
             TextBlockDaysDetails.Text = detailStr;
 
             if (pinned) {
-                Topmost = true;
+                if (!Topmost)
+                    Topmost = true;
                 if (!isFullScreen && (IsForegroundFullScreen() || IsMaximized())) {
                     isFullScreen = true;
                     transState = 0.0;
