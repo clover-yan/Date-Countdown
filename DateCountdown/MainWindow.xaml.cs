@@ -244,8 +244,8 @@ namespace DateCountdown
 
                 if (App.StartArgs.Contains("-b"))
                 {
-                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5, Opacity = alpha ? 0.5 : 1.0 };
-                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = 5, Opacity = alpha ? 0.5 : 1.0 };
+                    TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5, Opacity = 0.5 };
+                    TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = 5, Opacity = 0.5 };
                 }
 
                 if (App.StartArgs.Contains("-p"))
@@ -276,12 +276,12 @@ namespace DateCountdown
         // bool isJFMode = false;
         DateTime targetTime = new DateTime(2000, 1, 1, 0, 0, 0);
 
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Minimized)
-            {
-                WindowState = WindowState.Normal;
-            }
-        }
+        // private void Window_StateChanged(object sender, EventArgs e)
+        // {
+        //     if (WindowState == WindowState.Minimized)
+        //     {
+        //         WindowState = WindowState.Normal;
+        //     }
+        // }
     }
 }
