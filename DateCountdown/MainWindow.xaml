@@ -17,17 +17,18 @@
     <Grid MouseMove="Grid_MouseMove">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Name="TextBlockTitle"
+                       Margin="0,10,0,0"
                        Background="Transparent"
                        HorizontalAlignment="Center"
-                       FontFamily="Microsoft YaHei UI"
+                       FontFamily="Bahnschrift, Microsoft YaHei UI"
                        FontSize="60"
                        Text="距离高考还有"/>
             <TextBlock Name="TextBlockDays"
-                       Margin="20,2,0,0"
+                       Margin="20,0,0,0"
                        Foreground="#169141"
                        Background="Transparent"
                        HorizontalAlignment="Center"
-                       FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Bold"
+                       FontFamily="Bahnschrift Bold"
                        FontSize="80"
                        Text="100"/>
             <TextBlock Name="TextBlockDaysDetails"
@@ -35,19 +36,20 @@
                        Foreground="{Binding ElementName=TextBlockDays, Path=Foreground}"
                        Background="Transparent"
                        HorizontalAlignment="Center"
-                       FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Bold"
+                       FontFamily="Bahnschrift Bold"
                        FontSize="40"
                        Text=".00"/>
             <TextBlock Name="AfterText"
+                       Margin="0,10,0,0"
                        Background="Transparent"
                        HorizontalAlignment="Center"
-                       FontFamily="Microsoft YaHei UI"
+                       FontFamily="Bahnschrift, Microsoft YaHei UI"
                        FontSize="60"
                        Text="天"/>
             <TextBlock Name="TextBlockCopyright"
                        Text="Clover Yan, WXRIW (XY Wang) Production"
                        Margin="-350,90,0,0"
-                       FontFamily="/DateCountdown;component/Resources/#Circular Sp UI T Book"
+                       FontFamily="Bahnschrift SemiBold"
                        FontSize="18"
                        HorizontalAlignment="Right"/>
         </StackPanel>

@@ -90,9 +90,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\CircularSpUIT_Bold.ttf" />
-    <Resource Include="Resources\CircularSpUIT_Book.ttf" />
-    <Resource Include="Resources\spoticon_Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
