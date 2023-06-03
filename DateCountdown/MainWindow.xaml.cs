@@ -33,6 +33,11 @@ namespace DateCountdown
             InitializeComponent();
             DispatcherTimer_Tick(null, null);
 
+            if (App.StartArgs != null && App.StartArgs.Contains("-p"))
+            {
+                Topmost = true;
+            }
+
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -245,11 +250,6 @@ namespace DateCountdown
                 {
                     TextBlockTitle.Effect = AfterText.Effect = TextBlockCopyright.Effect = new DropShadowEffect { Color = light ? Colors.Black : Colors.White, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
                     TextBlockDays.Effect = TextBlockDaysDetails.Effect = new DropShadowEffect { Color = light ? Colors.White : Colors.Black, Direction = 320, ShadowDepth = 0, BlurRadius = 5 };
-                }
-
-                if (App.StartArgs.Contains("-p"))
-                {
-                    Topmost = true;
                 }
 
                 // if (App.StartArgs.Contains("-jf"))
