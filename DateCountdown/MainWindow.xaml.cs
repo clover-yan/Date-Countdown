@@ -116,12 +116,21 @@ namespace DateCountdown
                 reded = true;
                 TextBlockDays.Foreground = new SolidColorBrush(Colors.Red) { Opacity = alpha ? 0.5 : 1 };
             }
-            string detailStr = StringFormat == "." ? "" : Math.Abs(detailNum).ToString(StringFormat);
-            if (detailStr.StartsWith("1"))
-            {
-                TextBlockDays.Text = ((timeSpan.Days < 0 || detailNum < 0.0) && neg ? "-" + (Math.Abs(timeSpan.Days)+1).ToString() : (Math.Abs(timeSpan.Days)+1).ToString());
-                detailStr = StringFormat;
+            string detailStr;
+            if (StringFormat == ".") {
+                detailStr = "";
+                if (detailNum >= 0.5) {
+                    TextBlockDays.Text = ((timeSpan.Days < 0 || detailNum < 0.0) && neg ? "-" + (Math.Abs(timeSpan.Days)+1).ToString() : (Math.Abs(timeSpan.Days)+1).ToString());
+                }
+            } else {
+                detailStr = Math.Abs(detailNum).ToString(StringFormat);
+                if (detailStr.StartsWith("1"))
+                {
+                    TextBlockDays.Text = ((timeSpan.Days < 0 || detailNum < 0.0) && neg ? "-" + (Math.Abs(timeSpan.Days)+1).ToString() : (Math.Abs(timeSpan.Days)+1).ToString());
+                    detailStr = StringFormat;
+                }
             }
+            
             TextBlockDaysDetails.Text = detailStr;
 
             if (Topmost) {
