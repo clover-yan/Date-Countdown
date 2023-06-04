@@ -181,7 +181,7 @@ namespace DateCountdown
                 {
                     string[] text = App.StartArgs[0].Split('|');
                     if (text.Length == 1)
-                        TextBlockTitle.Text = text[0] == "" ? text[0] : "距离高考还有";
+                        TextBlockTitle.Text = text[0] != "" ? text[0] : "距离高考还有";
                     else {
                         TextBlockTitle.Text = text[0];
                         AfterText.Text = text[1];
