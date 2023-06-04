@@ -116,22 +116,11 @@ namespace DateCountdown
                 reded = true;
                 TextBlockDays.Foreground = new SolidColorBrush(Colors.Red) { Opacity = alpha ? 0.5 : 1 };
             }
-            string detailStr = Math.Abs(detailNum).ToString(StringFormat);
-            if (detailStr.StartsWith("1."))
+            string detailStr = StringFormat == "." ? "" : Math.Abs(detailNum).ToString(StringFormat);
+            if (detailStr.StartsWith("1"))
             {
-                try
-                {
-                    detailStr = ".";
-                    int n = int.Parse(App.StartArgs[7]);
-                    while (n-- > 0)
-                    {
-                        detailStr += "9";
-                    }
-                }
-                catch
-                {
-                    detailStr = ".999";
-                }
+                TextBlockDays.Text = ((timeSpan.Days < 0 || detailNum < 0.0) && neg ? "-" + (Math.Abs(timeSpan.Days)+1).ToString() : (Math.Abs(timeSpan.Days)+1).ToString());
+                detailStr = StringFormat;
             }
             TextBlockDaysDetails.Text = detailStr;
 
@@ -190,9 +179,12 @@ namespace DateCountdown
                 StringFormat = ".";
                 try
                 {
-                    TextBlockTitle.Text = App.StartArgs[0];
-                    if (TextBlockTitle.Text == "") {
-                        TextBlockTitle.Text = "距离高考还有";
+                    string[] text = App.StartArgs[0].Split('|');
+                    if (text.Length == 1)
+                        TextBlockTitle.Text = text[0] == "" ? text[0] : "距离高考还有";
+                    else {
+                        TextBlockTitle.Text = text[0];
+                        AfterText.Text = text[1];
                     }
                 }
                 catch
