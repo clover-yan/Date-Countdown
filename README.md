@@ -2,6 +2,8 @@
 
 由 Clover Yan 基于 [WXRIW 的作品](https://github.com/WXRIW/Gaokao-Countdown) 制作的日期倒计时应用。
 
+[官方网站](https://www.cyan.ml/apps/DateCountdown) [在中国大陆下载](https://ghproxy.com/https://github.com/clover-yan/Date-Countdown/releases/latest/download/DateCountdown.exe)
+
 ## 使用方法
 
 运行程序，以显示高考倒计时。
